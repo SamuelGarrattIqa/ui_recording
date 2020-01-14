@@ -25,4 +25,5 @@ After do |scenario|
   result_string = scenario.failed? ? 'False' : 'True'
   @browser.cookies.add 'zaleniumTestPassed', result_string # Tell Zalenium test result
   @browser.close
+  sleep 10 # Time for video to process
 end
