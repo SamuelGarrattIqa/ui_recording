@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'cucumber'
+gem 'cucumber'   # Test framework
 gem 'rspec'
-gem 'watir'
+gem 'watir'      # Interacts with UI
+gem 'webdrivers' # Install required webdrivers
