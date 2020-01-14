@@ -1,0 +1,14 @@
+test:
+  services:
+    - docker:19.03.5-dind
+  image: docker:latest
+  stage: test
+  script:
+    - apk add docker-compose
+    - docker-compose version
+    - docker-compose up --abort-on-container-exit --exit-code-from test
+  artifacts:
+    paths:
+      - tmp/
+    expire_in: 1 week
+    when: always

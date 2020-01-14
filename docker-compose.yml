@@ -1,0 +1,37 @@
+version: '2.1'
+
+services:
+  #--------------#
+  zalenium:
+    image: "dosel/zalenium"
+    hostname: zalenium
+    tty: true
+    volumes:
+      - ./tmp:/home/seluser/videos
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 4444:4444
+    command: start --sendAnonymousUsageInfo false
+    environment:
+      TZ: Pacific/Auckland
+      PULL_SELENIUM_IMAGE: "true"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4444/wd/hub/status"]
+      interval: 1s
+      timeout: 1s
+      # Wait up to 5 minutes for Zalenium to start
+      # Zalenium should start much faster; this allows for the docker Selenium image
+      # to be pulled on first start
+      retries: 300
+  test:
+    build: .
+    command: cucumber
+    volumes:
+      - .:/mysuite
+    depends_on:
+      zalenium:
+        condition: service_healthy
+    environment:
+      WEBDRIVER_URL: http://zalenium:4444/wd/hub # the WebDriver container, referenced by its service name
+      WEBDRIVER_CHROMEOPTIONS: start-maximized disable-popup-blocking no-sandbox disable-dev-shm-usage # additional chrome args separated by a space
+      remote: "true"
