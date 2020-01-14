@@ -21,6 +21,12 @@ Before do |scenario|
   end
 end
 
+# Add Step name as zalenium message
+AfterStep do |_result, step|
+  @browser.cookies.add 'zaleniumMessage', step.text
+  sleep 1 # Give time for message to show
+end
+
 After do |scenario|
   result_string = scenario.failed? ? 'False' : 'True'
   @browser.cookies.add 'zaleniumTestPassed', result_string # Tell Zalenium test result
