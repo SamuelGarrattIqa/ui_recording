@@ -25,7 +25,7 @@ services:
       retries: 300
   test:
     build: .
-    command: cucumber
+    command: rake cucumber
     volumes:
       - .:/mysuite
     depends_on:

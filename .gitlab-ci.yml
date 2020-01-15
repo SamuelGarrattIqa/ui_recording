@@ -7,8 +7,10 @@ test:
     - apk add docker-compose
     - docker-compose version
     - docker-compose up --abort-on-container-exit --exit-code-from test
+    - docker run -v $PWD/manual:/source jagregory/pandoc --from=markdown --to=docx --output=test.docx *.md
   artifacts:
     paths:
+      - manual/
       - tmp/
     expire_in: 1 week
     when: always

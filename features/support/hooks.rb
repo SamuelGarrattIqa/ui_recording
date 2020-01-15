@@ -23,8 +23,11 @@ end
 
 # Add Step name as zalenium message
 AfterStep do |_result, step|
-  @browser.cookies.add 'zaleniumMessage', step.text
-  sleep 1 # Give time for message to show
+  step_text = step.text
+  @browser.cookies.add 'zaleniumMessage', step_text
+  Document.text step_text
+  Document.page(@browser, "#{step_text}_#{Time.now.strftime("%H:%m:%S")}")
+  sleep 1.5 # Give time for message to show
 end
 
 After do |scenario|
