@@ -17,15 +17,16 @@ Before do |scenario|
   Document.feature scenario.feature.name
   Document.scenario scenario.name
   if ENV['remote']
-    @browser = Watir::Browser.new :firefox, **zalenium_args(scenario, scenario.feature.name)
+    @browser = Watir::Browser.new :chrome, **zalenium_args(scenario, scenario.feature.name)
   else
-    @browser = Watir::Browser.new :firefox
+    @browser = Watir::Browser.new :chrome
   end
 end
 
 # Add Step name as zalenium message
 AfterStep do |_result, step|
   step_text = step.text
+  sleep 0.5
   @browser.cookies.add 'zaleniumMessage', step_text
   Document.step step_text
   Document.page(@browser, "#{step_text}_#{Time.now.strftime("%H:%m:%S")}")
