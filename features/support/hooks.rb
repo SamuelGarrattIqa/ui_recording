@@ -25,7 +25,7 @@ end
 
 # Add Step name as zalenium message
 AfterStep do |_result, step|
-  step_text = step.text
+  step_text = "#{step.source[2].keyword}#{step.text}"
   sleep 0.5
   @browser.cookies.add 'zaleniumMessage', step_text
   Document.step step_text
