@@ -28,10 +28,11 @@ class Document
     end
 
     # Document feature if it's not the current one
-    def feature(text)
-      return unless current_feature != text
-      add_text_to_file "# Feature: #{text}"
-      self.current_feature = text
+    def feature(feature)
+      return unless current_feature != feature.name
+      add_text_to_file "# Feature: #{feature.name}"
+      add_text_to_file feature.description
+      self.current_feature = feature.name
     end
 
     def add_text_to_file(text)

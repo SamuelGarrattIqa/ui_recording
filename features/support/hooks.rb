@@ -14,7 +14,7 @@ def zalenium_args(scenario, feature_name)
 end
 
 Before do |scenario|
-  Document.feature scenario.feature.name
+  Document.feature scenario.feature
   Document.scenario scenario.name
   if ENV['remote']
     @browser = Watir::Browser.new :chrome, **zalenium_args(scenario, scenario.feature.name)
