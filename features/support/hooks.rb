@@ -14,6 +14,8 @@ def zalenium_args(scenario, feature_name)
 end
 
 Before do |scenario|
+  Document.feature scenario.feature.name
+  Document.scenario scenario.name
   if ENV['remote']
     @browser = Watir::Browser.new :firefox, **zalenium_args(scenario, scenario.feature.name)
   else
@@ -25,7 +27,7 @@ end
 AfterStep do |_result, step|
   step_text = step.text
   @browser.cookies.add 'zaleniumMessage', step_text
-  Document.text step_text
+  Document.step step_text
   Document.page(@browser, "#{step_text}_#{Time.now.strftime("%H:%m:%S")}")
   sleep 1.5 # Give time for message to show
 end
@@ -34,5 +36,5 @@ After do |scenario|
   result_string = scenario.failed? ? 'False' : 'True'
   @browser.cookies.add 'zaleniumTestPassed', result_string # Tell Zalenium test result
   @browser.close
-  sleep 10 # Time for video to process
+  sleep 20 # Time for video to process
 end

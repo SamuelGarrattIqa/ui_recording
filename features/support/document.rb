@@ -3,6 +3,8 @@
 # Handles documenting end to end scenarios adding text and images
 class Document
   class << self
+    attr_accessor :current_feature
+
     # @return [String] Folder in which scenarios are placed
     def doc_folder
       'manual'
@@ -17,8 +19,19 @@ class Document
       add_text_to_file "![#{name}](#{relative_path})"
     end
 
-    def text(text)
+    def step(text)
       add_text_to_file "### #{text}"
+    end
+
+    def scenario(text)
+      add_text_to_file "## Scenario: #{text}"
+    end
+
+    # Document feature if it's not the current one
+    def feature(text)
+      return unless current_feature != text
+      add_text_to_file "# Feature: #{text}"
+      self.current_feature = text
     end
 
     def add_text_to_file(text)
