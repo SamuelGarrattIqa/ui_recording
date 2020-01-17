@@ -26,7 +26,7 @@ pipeline {
                         post {
                             always {
                                 junit 'logs/*.xml'
-                                publishHTML([allowMissing: false, keepAll: true, reportDir: 'tmp', reportFiles: 'dashboard.html',
+                                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'tmp', reportFiles: 'dashboard.html',
                                             reportName: "Video recording ${BROWSER}"])
                                 archiveArtifacts artifacts: 'manual/test.docx', onlyIfSuccessful: true
                             }
