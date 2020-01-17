@@ -5,6 +5,12 @@ pipeline {
     stages {
         stage('matrix') {
             matrix {
+                agent {
+                    node {
+                        label 'master'
+                        customWorkspace "~/.jenkins/workspace/recording_${BROWSER}"
+                    }
+                }
                 axes {
                     axis {
                         name 'BROWSER'
