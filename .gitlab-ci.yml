@@ -1,4 +1,4 @@
-firefox:
+.job_template: &job_definition
   services:
     - docker:19.03.5-dind
   image: docker:latest
@@ -17,24 +17,13 @@ firefox:
       junit: logs/*.xml
     expire_in: 1 week
     when: always
+
+firefox:
+  <<: *job_definition
   variables:
     BROWSER: firefox
 
 chrome:
-  services:
-    - docker:19.03.5-dind
-  image: docker:latest
-  stage: test
-  script:
-    - apk add docker-compose
-    - docker-compose version
-    - docker-compose up --abort-on-container-exit --exit-code-from test
-    - docker run -v $PWD/manual:/source jagregory/pandoc --from=markdown --to=docx --output=test.docx training.md
-  artifacts:
-    paths:
-      - manual/
-      - tmp/
-    expire_in: 1 week
-    when: always
+  <<: *job_definition
   variables:
     BROWSER: chrome
