@@ -10,7 +10,7 @@ services:
       - ./tmp:/home/seluser/videos
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 4444:4444
+      - 4444 # Using just container port (an ephemeral host port is chosen)
     command: start --sendAnonymousUsageInfo false
     environment:
       TZ: Pacific/Auckland
