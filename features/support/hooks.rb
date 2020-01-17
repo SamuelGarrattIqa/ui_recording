@@ -16,10 +16,11 @@ end
 Before do |scenario|
   Document.feature scenario.feature
   Document.scenario scenario.name
+  browser_type = ENV['BROWSER']&.to_sym || :chrome
   if ENV['remote']
-    @browser = Watir::Browser.new :chrome, **zalenium_args(scenario, scenario.feature.name)
+    @browser = Watir::Browser.new browser_type, **zalenium_args(scenario, scenario.feature.name)
   else
-    @browser = Watir::Browser.new :chrome
+    @browser = Watir::Browser.new browser_type
   end
 end
 

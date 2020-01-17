@@ -55,9 +55,10 @@
 
 ---
 
-## Limitations TODO: Rewrite
+## Limitations
 
-* 
+* Time it takes to download docker images (compare Jenkins and gitlab times)
+(This could be improved through a different runner perhaps)
 
 ---
 

@@ -1,4 +1,26 @@
-test:
+firefox:
+  services:
+    - docker:19.03.5-dind
+  image: docker:latest
+  stage: test
+  script:
+    - apk add docker-compose
+    - docker-compose version
+    - docker-compose up --abort-on-container-exit --exit-code-from test
+    - docker run -v $PWD/manual:/source jagregory/pandoc --from=markdown --to=docx --output=test.docx training.md
+  artifacts:
+    paths:
+      - manual/
+      - tmp/
+      - logs/*.xml
+    reports:
+      junit: logs/*.xml
+    expire_in: 1 week
+    when: always
+  variables:
+    BROWSER: firefox
+
+chrome:
   services:
     - docker:19.03.5-dind
   image: docker:latest
@@ -14,3 +36,5 @@ test:
       - tmp/
     expire_in: 1 week
     when: always
+  variables:
+    BROWSER: chrome

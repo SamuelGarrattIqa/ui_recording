@@ -1,1 +1,1 @@
-default: --format pretty --retry 3
+default: --format pretty --retry 3 --format junit --out logs
