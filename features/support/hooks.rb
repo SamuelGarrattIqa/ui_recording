@@ -26,6 +26,7 @@ Before do |scenario|
   else
     @browser = Watir::Browser.new browser_type
   end
+  raise 'Error creating browser' unless @browser
 end
 
 # Add Step name as zalenium message

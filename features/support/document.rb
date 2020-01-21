@@ -15,7 +15,11 @@ class Document
       file_name = name.tr(' ', '_').snakecase
       relative_path = File.join('img', "#{file_name}.png")
       full_file_name = File.join(doc_folder, relative_path)
-      browser.screenshot.save full_file_name
+      begin
+        browser.screenshot.save full_file_name
+      rescue Selenium::WebDriver::Error::WebDriverError => e
+        puts e.message
+      end
       add_text_to_file "![#{name}](#{relative_path})"
     end
 
