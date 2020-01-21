@@ -12,3 +12,13 @@ Feature: Dev Ops
     Given I am on the IntegrationQA blog page
     When I search for 'Culture change'
     Then a result is returned
+
+  Scenario: Find Automated testing blog
+    Given I am on the IntegrationQA blog page
+    When I search for 'Automated testing'
+    Then a result is returned
+
+  Scenario: Find Continuous integration blog
+    Given I am on the IntegrationQA blog page
+    When I search for 'Continuous integration'
+    Then a result is returned
