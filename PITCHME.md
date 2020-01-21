@@ -56,12 +56,11 @@ You will notice how 4 nodes have been created with `docker ps`.
 @[12,13](Zalenium hosted on port 4444 within docker-compose network)
 @[14](Command to start zalenium without sending statistics)
 @[15,17](Pulls default Selenium image used to create browser images)
-@[18-25](Polls until Selenium grid's status is up and running)
-@[26-27](Build test image from source Dockerfile)
-@[28](Command to run tests written in cucumber)
-@[29-30](Uses code in repo within container, sharing logs back)
-@[31-33](This container requires Zalenium to be ready before being run)
-@[34-35](Setting an environment variable with the location of the Selenium grid)
+@[18-19](Build test image from source Dockerfile)
+@[20](Shell script to run tests when ready)
+@[21-22](Uses code in repo within container, sharing logs back)
+@[25-26](Setting an environment variable with the location of the Selenium grid)
+@[29](Specifying what browser to run)
 
 ---
 
@@ -70,6 +69,7 @@ You will notice how 4 nodes have been created with `docker ps`.
 ---?code=run_tests_when_ready.sh
 
 @[2](Wait until zalenium is up. Takes into account downloading Zalenium image)
+@[3](Command that runs tests. This can be replaced by any command that runs UI test)
 
 ---
 
