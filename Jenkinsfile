@@ -2,6 +2,7 @@ pipeline {
     agent {
         label 'master'
     }
+    options { buildDiscarder(logRotator(numToKeepStr: '2')) }
     stages {
         stage('matrix') {
             matrix {
