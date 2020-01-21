@@ -17,7 +17,7 @@ services:
       PULL_SELENIUM_IMAGE: "true"
   test:
     build: .
-    command: ./run_tests_when_ready.sh
+    command: ./run_tests_when_ready_parallel.sh
     volumes:
       - .:/mysuite
     depends_on:

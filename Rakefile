@@ -1,5 +1,6 @@
 require 'cucumber/rake/task'
 require 'rake/clean'
+require 'parallel_tests/tasks'
 
 directory 'logs'
 directory 'tmp'
@@ -28,10 +29,7 @@ task :zalenium_ready do
   end
 end
 
-desc 'Run cucumber scenarios in parallel'
-task cucumber: :setup do
-  raise 'Test failed' unless system 'parallel_cucumber features --group-by scenarios'
-end
+Cucumber::Rake::Task.new
 
 desc 'Convert markdown to doc'
 task :md_to_doc do

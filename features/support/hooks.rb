@@ -51,5 +51,8 @@ After do |scenario|
     puts "Unknown error setting cookie #{e.message}"
   end
   @browser.close
+end
+
+at_exit do
   sleep 20 # Time for video to process
 end
