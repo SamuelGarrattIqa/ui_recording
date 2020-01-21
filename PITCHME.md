@@ -1,14 +1,23 @@
-# UI Test recording in gitlab pipeline
+## Recording UI Tests in gitlab pipeline
 
 ---
 
 ## What is Zalenium
 
+Zalenium provides a dockerised Selenium Grid that creates Chrome and Firefox nodes on demand.
+It also provides video recording which is the focus of this presentation.
 
+If we start up our docker-compose configuration with following command
+
+`docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-code-from test`
+
+we can see a live preview of the nodes running at `http://localhost:4444/grid/admin/live`. 
+You will notice how 4 nodes have been created with `docker ps`.
+ We can also see a dashboard of the tests run at `http://localhost:4444/dashboard/`. 
 
 ---
 
-## Components
+## Gitlab Components
 
 * Gitlab runner on docker image (runs everything)
 * docker:19.03.5-dind service allowing docker from within docker image
@@ -24,11 +33,12 @@
 
 ---
 
-## What this allows
+## What this recording allows
 
 * One to easier to debug UI failures
 * Provide demo of UI tests
 * Could be a medium for training documentation
+* (Zalenium also removes the need for the test tool to have browsers installed)
 
 ---
 
@@ -43,6 +53,7 @@
 @[7](Hostname given so that tests using it have easy reference name)
 @[9-10](Sharing volume where video is stored to gitlab runner)
 @[9,11](Docker socket shared so Zalenium can create its own containers)
+@[12,13](Zalenium hosted on port 4444 within docker-compose network)
 @[14](Command to start zalenium without sending statistics)
 @[15,17](Pulls default Selenium image used to create browser images)
 @[18-25](Polls until Selenium grid's status is up and running)
@@ -53,6 +64,16 @@
 @[34-35](Setting an environment variable with the location of the Selenium grid)
 
 ---
+
+# Shell script to poll until Selenium grid's status is up and running
+
+---?code=run_tests_when_ready.sh
+
+@[2](Wait until zalenium is up. Takes into account downloading Zalenium image)
+
+---
+
+# Gitlab CI Config
 
 ---?code=.gitlab-ci.yml&lang=yaml&title=Gitlab CI YAML
 

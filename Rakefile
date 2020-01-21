@@ -29,7 +29,7 @@ task :zalenium_ready do
 end
 
 desc 'Run cucumber scenarios in parallel'
-task cucumber: %i[setup zalenium_ready] do
+task cucumber: :setup do
   raise 'Test failed' unless system 'parallel_cucumber features --group-by scenarios'
 end
 

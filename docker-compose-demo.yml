@@ -10,14 +10,14 @@ services:
       - ./tmp:/home/seluser/videos
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 4444:4444 # Using just container port (an ephemeral host port is chosen)
+      - 4444:4444 # Using port 4444 on host for demo/sharing across an external network
     command: start --sendAnonymousUsageInfo false
     environment:
       TZ: Pacific/Auckland
       PULL_SELENIUM_IMAGE: "true"
   test:
     build: .
-    command: rake cucumber
+    command: ./run_tests_when_ready.sh
     volumes:
       - .:/mysuite
     depends_on:
