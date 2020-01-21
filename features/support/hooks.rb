@@ -32,7 +32,11 @@ end
 AfterStep do |_result, step|
   step_text = "#{step.source[2].keyword}#{step.text}"
   sleep 0.5
-  @browser.cookies.add 'zaleniumMessage', step_text
+  begin
+    @browser.cookies.add 'zaleniumMessage', step_text
+  rescue Selenium::WebDriver::Error::UnknownError => e
+    puts "Unknown error setting cookie #{e.message}"
+  end
   Document.step step_text
   Document.page(@browser, "#{step_text}_#{Time.now.strftime("%H:%m:%S")}")
   sleep 1.5 # Give time for message to show
