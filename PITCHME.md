@@ -69,7 +69,7 @@ You will notice how 4 nodes have been created with `docker ps`.
 ---?code=run_tests_when_ready.sh
 
 @[2](Wait until zalenium is up. Takes into account downloading Zalenium image)
-@[3](Command that runs tests. This can be replaced by any command that runs UI test)
+@[3-4](Commands that runs tests. This can be replaced by any command that runs UI test)
 
 ---
 
