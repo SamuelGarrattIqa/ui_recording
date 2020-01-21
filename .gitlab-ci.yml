@@ -18,7 +18,7 @@
     expire_in: 1 week
     when: always
 
-firefox:
+.firefox:
   <<: *job_definition
   variables:
     BROWSER: firefox
