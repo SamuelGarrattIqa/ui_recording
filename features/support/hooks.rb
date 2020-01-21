@@ -44,7 +44,11 @@ end
 
 After do |scenario|
   result_string = scenario.failed? ? 'False' : 'True'
-  @browser.cookies.add 'zaleniumTestPassed', result_string # Tell Zalenium test result
+  begin
+    @browser.cookies.add 'zaleniumTestPassed', result_string # Tell Zalenium test result
+  rescue Selenium::WebDriver::Error::UnknownError => e
+    puts "Unknown error setting cookie #{e.message}"
+  end
   @browser.close
   sleep 20 # Time for video to process
 end
