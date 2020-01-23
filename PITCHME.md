@@ -16,11 +16,17 @@ be created from tests run.
 Zalenium provides a dockerised Selenium Grid that creates Chrome and Firefox nodes on demand.
 It also provides video recording which is the focus of this presentation.
 
-If we start up our docker-compose configuration with following command:
+Let's start up our docker-compose configuration with following command:
 
-`docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-code-from test`
+```sh
+docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-code-from test
+```
 
-we can see a live preview of the nodes running at `http://localhost:4444/grid/admin/live`. 
+---
+
+## Observing it run 
+
+We can see a live preview of the nodes running at `http://localhost:4444/grid/admin/live`. 
 You will notice how 4 nodes have been created with `docker ps`.
  We can also see a dashboard of the tests run at `http://localhost:4444/dashboard/`. 
 
@@ -92,6 +98,7 @@ You will notice how 4 nodes have been created with `docker ps`.
 @[6-7](Install docker-compose)
 @[6,9](Run docker compose, exiting when tests finish)
 @[6,10](Run pandoc to covert markdown into docx)
+
 
 ---
 
