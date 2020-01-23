@@ -86,7 +86,9 @@ and a [dashboard of the tests finished](http://localhost:4444/dashboard/).
 
 ---
 
-# Shell script to poll until Selenium grid's status is up and running
+## Polling shell script
+ 
+Shell script to poll until Selenium grid's status is up and running
 
 ---?code=run_tests_when_ready.sh
 
