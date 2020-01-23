@@ -18,9 +18,9 @@ It also provides video recording which is the focus of this presentation.
 
 Let's start up our docker-compose configuration with following command:
 
-```sh
+`
 docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-code-from test
-```
+`
 
 ---
 
