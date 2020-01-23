@@ -2,12 +2,21 @@
 
 ---
 
+## Introduction
+
+This presentation will demonstrate using Zalenium to provide a
+scalable Selenium Grid with video recording, running this in Gitlab
+and Jenkins for a single test execution, and how a test manual can
+be created from tests run. 
+
+---
+
 ## What is Zalenium
 
 Zalenium provides a dockerised Selenium Grid that creates Chrome and Firefox nodes on demand.
 It also provides video recording which is the focus of this presentation.
 
-If we start up our docker-compose configuration with following command
+If we start up our docker-compose configuration with following command:
 
 `docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-code-from test`
 
@@ -77,8 +86,12 @@ You will notice how 4 nodes have been created with `docker ps`.
 
 ---?code=.gitlab-ci.yml&lang=yaml&title=Gitlab CI YAML
 
-@[1-3](Uses docker image that allows docker containers to be created within it as a background service for Zalenium)
+@[1](Template used so same YAML can be used for multiple browsers)
+@[2-3](Uses docker-dind image that allows docker containers to be created within it as a background service for Zalenium)
 @[4](Base image itself is docker)
+@[6-7](Install docker-compose)
+@[6,9](Run docker compose, exiting when tests finish)
+@[6,10](Run pandoc to covert markdown into docx)
 
 ---
 
