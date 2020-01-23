@@ -28,9 +28,14 @@ docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-co
 
 At the [console](http://localhost:4444/grid/console) you see a console of nodes, showing
 the pending requests for more nodes
-You will notice how 4 nodes have been created with [docker ps](docker ps).
-We can see a live preview of the nodes running at `http://localhost:4444/grid/admin/live`. 
- We can also see a dashboard of the tests run at `http://localhost:4444/dashboard/`. 
+You will notice how 4 nodes have been created by running 
+
+`
+docker ps
+`
+
+Look at the [live preview](http://localhost:4444/grid/admin/live) of the nodes running. 
+and a [dashboard of the tests finished](http://localhost:4444/dashboard/). 
 
 ---
 
