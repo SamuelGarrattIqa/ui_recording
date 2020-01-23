@@ -44,7 +44,7 @@ You will notice how 4 nodes have been created with `docker ps`.
 
 ## How they fit together
 
-#![Recording Configuration](assets/img/RecordingConfig.png)
+![Recording Configuration](assets/img/RecordingConfig.png)
 
 ---
 
