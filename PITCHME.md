@@ -93,7 +93,7 @@ Shell script to poll until Selenium grid's status is up and running
 ---?code=run_tests_when_ready.sh
 
 @[2](Wait until zalenium is up. Takes into account downloading Zalenium image)
-@[3-4](Commands that runs tests. This can be replaced by any command that runs UI test)
+@[3-4](Commands that runs tests. This can be replaced by any command that runs UI tests)
 
 ---
 
@@ -107,7 +107,20 @@ Shell script to poll until Selenium grid's status is up and running
 @[6-7](Install docker-compose)
 @[6,9](Run docker compose, exiting when tests finish)
 @[6,10](Run pandoc to covert markdown into docx)
+@[11-13](Path where manual doc created by pandoc is stored [eg](https://gitlab.com/samuel-garratt/ui_recording/-/jobs/413283772/artifacts/browse/manual/))
+@[11-12,14](Holds Zalenium dashboard and videos [eg](https://samuel-garratt.gitlab.io/-/ui_recording/-/jobs/413283772/artifacts/tmp/dashboard.html))
+@[11-12,15-17](Junit results archived to show tests run [eg](https://gitlab.com/samuel-garratt/ui_recording/pipelines/111824903/test_report))
 
+---
+
+# Example running via Jenkins too
+
+---?code=Jenkinsfile&lang=groovy&title=Jenkinsfile
+
+@[2-4](The agent has docker installed. In Practice this would better be an agent other than master)
+@[7-8,15-20](Running matrix with stages for 2 browsers)
+@[22-26](Run docker-compose file and pandoc to create manual)
+@[27-34](Archive artifacts. They can be seen when running this [locally](http://localhost:8080))
 
 ---
 
@@ -121,7 +134,16 @@ Shell script to poll until Selenium grid's status is up and running
 ## Things to do
 
 * Could write blog on this. I think it would be beneficial to others
-* Show how it could work on other CI systems (e.g. Jenkins)
+* Show how it could work on other CI systems (e.g. bitbucket pipelines)
+
+---
+
+## Give it a try
+
+Fork this repo and have a play with it
+
+* Try playing with CI settings
+* Try putting your own UI testing tool in there
 
 ---
 
