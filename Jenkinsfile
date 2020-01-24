@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'master'
+        label 'docker-compose'
     }
     options { buildDiscarder(logRotator(numToKeepStr: '2')) }
     stages {
