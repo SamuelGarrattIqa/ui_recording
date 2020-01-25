@@ -4,11 +4,11 @@ pipeline {
     }
     options { buildDiscarder(logRotator(numToKeepStr: '2')) }
     stages {
-        stage('matrix') {
+        stage('browsers') {
             matrix {
                 agent {
                     node {
-                        label 'master'
+                        label 'docker-compose'
                         customWorkspace "~/.jenkins/workspace/recording_${BROWSER}"
                     }
                 }

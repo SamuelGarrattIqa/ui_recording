@@ -117,7 +117,7 @@ Shell script to poll until Selenium grid's status is up and running
 
 ---?code=Jenkinsfile&lang=groovy&title=Jenkinsfile
 
-@[2-4](The agent has docker installed. In Practice this would better be an agent other than master)
+@[2-4](An agent has docker-compose installed)
 @[7-8,15-20](Running matrix with stages for 2 browsers)
 @[22-26](Run docker-compose file and pandoc to create manual)
 @[27-34](Archive artifacts. They can be seen when running this [locally](http://localhost:8080))
