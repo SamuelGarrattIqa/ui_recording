@@ -74,7 +74,7 @@ and a [dashboard of the tests finished](http://localhost:4444/dashboard/).
 @[5-6](Defining Zalenium open source image)
 @[7](Hostname given so that tests using it have easy reference name)
 @[9-10](Sharing volume where video is stored to gitlab runner)
-@[9,11](Docker socket shared so Zalenium can create its own containers)
+@[9,11]([Docker socket](https://stackoverflow.com/a/58658899/4696083) shared so Zalenium can create its own containers)
 @[12,13](Zalenium hosted on port 4444 within docker-compose network)
 @[14](Command to start zalenium without sending statistics)
 @[15,17](Pulls default Selenium image used to create browser images)
@@ -118,6 +118,7 @@ Shell script to poll until Selenium grid's status is up and running
 ---?code=Jenkinsfile&lang=groovy&title=Jenkinsfile
 
 @[2-4](An agent has docker-compose installed)
+@[2-4](An agent has docker-compose installed)
 @[7-8,15-20](Running matrix with stages for 2 browsers)
 @[22-26](Run docker-compose file and pandoc to create manual)
 @[27-34](Archive artifacts. They can be seen when running this [locally](http://localhost:8080))
@@ -128,6 +129,8 @@ Shell script to poll until Selenium grid's status is up and running
 
 * Time it takes to download docker images (compare Jenkins and gitlab times)
 (This could be improved through a different runner perhaps)
+* Mounting /var/run/docker.sock inside the container is a common, yet very dangerous practice. 
+An attacker can execute any command that the docker service can run, which generally provides access to the whole host system as the docker service runs as root.
 
 ---
 
