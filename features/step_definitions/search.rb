@@ -8,5 +8,7 @@ When 'I search for {string}' do |search_string|
 end
 
 Then 'a result is returned' do
-  @browser.div(id: 'content-area').article.wait_until_present.flash
+  article = @browser.div(id: 'content-area').article.wait_until(&:present?)
+  article.flash
+  article.click
 end
