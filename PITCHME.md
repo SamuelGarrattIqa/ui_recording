@@ -108,8 +108,8 @@ Shell script to poll until Selenium grid's status is up and running
 @[6-7](Install docker-compose)
 @[6,9](Run docker compose, exiting when tests finish)
 @[6,10](Run pandoc to covert markdown into docx)
-@[11-13](Path where manual doc created by pandoc is stored [eg](https://gitlab.com/samuel-garratt/ui_recording/-/jobs/413283772/artifacts/browse/manual/))
-@[11-12,14](Holds Zalenium dashboard and videos [eg](https://samuel-garratt.gitlab.io/-/ui_recording/-/jobs/413283772/artifacts/tmp/dashboard.html))
+@[11-13](Path where manual doc created by pandoc is stored [eg](https://gitlab.com/samuel-garratt/ui_recording/-/jobs/415191175/artifacts/browse/manual/))
+@[11-12,14](Holds Zalenium dashboard and videos [eg](https://samuel-garratt.gitlab.io/-/ui_recording/-/jobs/415191175/artifacts/tmp/dashboard.html))
 @[11-12,15-17](Junit results archived to show tests run [eg](https://gitlab.com/samuel-garratt/ui_recording/pipelines/111824903/test_report))
 
 ---
