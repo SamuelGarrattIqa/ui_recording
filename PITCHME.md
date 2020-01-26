@@ -1,4 +1,4 @@
-## Recording UI Tests in gitlab pipeline
+## Recording UI Tests in Gitlab Pipelines
 
 ---
 
