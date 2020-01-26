@@ -4,10 +4,11 @@
 
 ## Introduction
 
-This presentation will demonstrate using Zalenium to provide a
-scalable Selenium Grid with video recording, running this in Gitlab
-and Jenkins for a single test execution, and how a test manual can
-be created from tests run. 
+This presentation will:
+ 
+* Demonstrate using Zalenium to provide a scalable Selenium Grid with video recording
+* How to run this in Gitlab and Jenkins (just for that CI job/stage) 
+* How a user manual can be created from tests run. 
 
 ---
 
