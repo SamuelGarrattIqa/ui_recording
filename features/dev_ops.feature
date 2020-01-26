@@ -1,6 +1,6 @@
 Feature: Dev Ops
 
-  IntegratonQA should know about Dev Ops so they can help companies with bridge the gap between
+  IntegrationQA should know about Dev Ops so they can help companies to bridge the gap between
   development and operations
 
   Scenario: Find Dev Ops blog

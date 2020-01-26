@@ -8,7 +8,7 @@ This presentation will:
  
 * Demonstrate using Zalenium to provide a scalable Selenium Grid with video recording
 * How to run this in Gitlab and Jenkins (just for that CI job/stage) 
-* How a user manual can be created from tests run. 
+* How a user manual can be created from tests run 
 
 ---
 
@@ -27,8 +27,8 @@ docker-compose -f docker-compose-demo.yml up --abort-on-container-exit --exit-co
 
 ## Observing it run 
 
-At the [console](http://localhost:4444/grid/console) you see a console of nodes, showing
-the pending requests for more nodes
+At the [console](http://localhost:4444/grid/console) you see a number of nodes, showing
+pending requests for more nodes
 You will notice how 4 nodes have been created by running 
 
 `
@@ -43,9 +43,9 @@ and a [dashboard of the tests finished](http://localhost:4444/dashboard/).
 ## Gitlab Components
 
 * Gitlab runner on docker image (runs everything)
-* docker:19.03.5-dind service allowing docker from within docker image
+* docker:19.03.5-dind service allowing docker to create more containers from itself
 * docker-compose (creating network with Zalenium connected to test suite)
-* Ruby coded framework (this could be replaced by any language/test tool)
+* Ruby coded framework (this could be replaced by any language/test tool that has UI tests)
 * Zalenium container which creates chrome/firefox containers on demand
 
 ---
@@ -128,7 +128,7 @@ Shell script to poll until Selenium grid's status is up and running
 
 ## Limitations
 
-* Time it takes to download docker images (compare Jenkins and gitlab times)
+* [Time it takes](https://gitlab.com/samuel-garratt/ui_recording/pipelines/111824903/builds) to download docker images (compare Jenkins and gitlab times)
 (This could be improved through a different runner perhaps)
 * Mounting /var/run/docker.sock inside the container is a common, yet very dangerous practice. 
 An attacker can execute any command that the docker service can run, which generally provides access to the whole host system as the docker service runs as root.
