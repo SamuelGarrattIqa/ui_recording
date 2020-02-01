@@ -2,6 +2,7 @@ require 'watir'
 require 'webdrivers'
 
 ENV['WEBDRIVER_URL'] = 'http://localhost:4444/wd/hub' # Using https://github.com/marketplace/actions/zalenium-server
+ENV['remote'] = 'true'
 
 def zalenium_args(scenario, feature_name)
   {
