@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Zalenium Server
+    - name: Zalenium Server # Using https://github.com/marketplace/actions/zalenium-server
       uses: ajinx/zalenium@1.1
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.6
@@ -19,6 +19,8 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+        export remote=true
+        export WEBDRIVER_URL=http://localhost:4444/wd/hub
         bundle exec parallel_cucumber features --group-by scenarios
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0

@@ -10,5 +10,5 @@ end
 Then 'a result is returned' do
   article = @browser.div(id: 'content-area').article.wait_until(&:present?)
   article.flash
-  article.click
+  article.link.click
 end

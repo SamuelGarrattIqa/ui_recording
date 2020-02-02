@@ -1,9 +1,6 @@
 require 'watir'
 require 'webdrivers'
 
-ENV['WEBDRIVER_URL'] = 'http://localhost:4444/wd/hub' # Using https://github.com/marketplace/actions/zalenium-server
-ENV['remote'] = 'true'
-
 def zalenium_args(scenario, feature_name)
   {
       timeout: 120,
@@ -57,5 +54,5 @@ After do |scenario|
 end
 
 at_exit do
-  sleep 20 # Time for video to process
+  sleep 20 if ENV['remote'] # Time for video to process
 end
