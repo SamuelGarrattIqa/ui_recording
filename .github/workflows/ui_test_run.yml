@@ -3,7 +3,7 @@ name: UI Tests With Recording
 on: [push]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
